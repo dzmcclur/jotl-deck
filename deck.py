@@ -1,5 +1,5 @@
 import random
-from typing import Dict, List, Tuple
+from typing import List
 from validator import Validator
 
 class OneOf(Validator):
