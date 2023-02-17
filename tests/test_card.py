@@ -4,16 +4,20 @@ from card import Card
 class TestCardMethods(unittest.TestCase):
 
     def test_get_card_image_from_path(self):
-        pass
-        # test_card_1 = Card()
+        test_card_1 = Card()
+        image_path = './tests/test_image.png'
 
-        # test_bytestring = 'test_string'.encode('UTF-8')
-        # # with open('./tests/test_image.png','wb') as test_image_file:
-        # #     test_image_file.write(test_bytestring)
+        test_card_1.image_path = image_path
 
-        # test_card_1.image_path = './tests/test_image.png'
+        self.assertIsNotNone(test_card_1.image)
 
-        # test_image = test_card_1.image
+    def test_get_card_image_error(self):
+        test_card_1 = Card()
+        image_path = 'bad path'
+        error_message = f'[Errno 2] No such file or directory: \'{image_path}\''
+        test_card_1.image_path = image_path
+
+        self.assertRaisesRegex(RuntimeError, error_message, test_card_1.image)
 
 if __name__ == '__main__':
     unittest.main()

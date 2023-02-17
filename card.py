@@ -15,9 +15,10 @@ class Card:
     @LazyProperty
     def image(self):
         try:
-            with Image.open(self.image_path) as image_blob:
+            with Image.open(self.image_path, mode='r') as image_blob:
                 return image_blob
         except IOError as e:
+            print(e)
             pass
         return None
 
